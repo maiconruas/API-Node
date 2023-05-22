@@ -4,7 +4,19 @@ const Product = mongoose.model('Product');
 exports.get = (req, res, next) => {
     Product.find({ active: true }, 'title price slug')
         .then(data => {
-            res.status(201).send(data);
+            res.status(200).send(data);
+        }).catch(e =>{
+             res.status(400).send(e);
+        });
+};
+
+exports.getBySlug = (req, res, next) => {
+    Product.findOne({
+        slug: req.params.slug,
+        active: true
+        }, 'title price slug tags')
+        .then(data => {
+            res.status(200).send(data);
         }).catch(e =>{
              res.status(400).send(e);
         });
