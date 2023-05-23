@@ -10,6 +10,7 @@ mongoose.connect('Connect String');
 
 // Carregar Models
 const Product = require('./models/product');
+const Customer = require('./models/customer');
 
 //Carregar as rotas
 const index = require('./routes/index-route');
